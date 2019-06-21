@@ -108,16 +108,15 @@ if [[ -d "${ZPLUG_HOME}" ]]; then
   source "${ZPLUG_HOME}/init.zsh"
 fi
 
-zplug 'plugins/bundler', from:oh-my-zsh, if:'which bundle'
 zplug 'plugins/colored-man-pages', from:oh-my-zsh
 zplug 'plugins/completion', from:oh-my-zsh
 zplug 'plugins/extract', from:oh-my-zsh
 zplug 'plugins/fancy-ctrl-z', from:oh-my-zsh
 zplug 'plugins/git', from:oh-my-zsh, if:'which git'
 #zplug 'plugins/gpg-agent', from:oh-my-zsh, if:'which gpg-agent'
-zplug 'plugins/httpie', from:oh-my-zsh, if:'which httpie'
-zplug 'plugins/nanoc', from:oh-my-zsh, if:'which nanoc'
-zplug 'plugins/nmap', from:oh-my-zsh, if:'which nmap'
+#zplug 'plugins/httpie', from:oh-my-zsh, if:'which httpie'
+#zplug 'plugins/nanoc', from:oh-my-zsh, if:'which nanoc'
+#zplug 'plugins/nmap', from:oh-my-zsh, if:'which nmap'
 zplug 'plugins/tmux', from:oh-my-zsh, if:'which tmux'
 
 #zplug 'b4b4r07/enhancd', use:init.sh
