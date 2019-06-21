@@ -42,5 +42,6 @@
 	enabled = true
 
 [user]
-	name = Matthias Vallentin
-	email = vallentin@icir.org
+	name = Martin Huter
+	email = martin.huter87@gmail.com
+	signingkey = 5686D0EBC96E9B54CC5F3367B198DAAB514B53CF
