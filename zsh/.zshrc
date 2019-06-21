@@ -113,10 +113,6 @@ zplug 'plugins/completion', from:oh-my-zsh
 zplug 'plugins/extract', from:oh-my-zsh
 zplug 'plugins/fancy-ctrl-z', from:oh-my-zsh
 zplug 'plugins/git', from:oh-my-zsh, if:'which git'
-#zplug 'plugins/gpg-agent', from:oh-my-zsh, if:'which gpg-agent'
-#zplug 'plugins/httpie', from:oh-my-zsh, if:'which httpie'
-#zplug 'plugins/nanoc', from:oh-my-zsh, if:'which nanoc'
-#zplug 'plugins/nmap', from:oh-my-zsh, if:'which nmap'
 zplug 'plugins/tmux', from:oh-my-zsh, if:'which tmux'
 
 #zplug 'b4b4r07/enhancd', use:init.sh
@@ -134,6 +130,10 @@ zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-completions', defer:2
 zplug 'zsh-users/zsh-history-substring-search'
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
+
+#mgh custom
+zplug "lib/directories", from:oh-my-zsh
+
 
 if ! zplug check; then
   zplug install
@@ -395,6 +395,9 @@ update() {
   .tmux/plugins/tpm/bin/update_plugins all
   vim +PlugUpgrade +PlugUpdate +PlugCLean! +qa
 }
+
+# GPG key id
+export KEYID=5686D0EBC96E9B54CC5F3367B198DAAB514B53CF
 
 # =============================================================================
 #                                   Startup
