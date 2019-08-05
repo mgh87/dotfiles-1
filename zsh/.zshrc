@@ -114,6 +114,14 @@ zplug 'plugins/extract', from:oh-my-zsh
 zplug 'plugins/fancy-ctrl-z', from:oh-my-zsh
 zplug 'plugins/git', from:oh-my-zsh, if:'which git'
 zplug 'plugins/tmux', from:oh-my-zsh, if:'which tmux'
+zplug 'plugins/mvn', from:oh-my-zsh
+zplug 'plugins/jenv', from:oh-my-zsh
+zplug 'plugins/aws', from:oh-my-zsh
+
+# docker
+zplug 'plugins/docker', from:oh-my-zsh
+zplug 'plugins/docker-compose', from:oh-my-zsh
+zplug 'plugins/docker-machine', from:oh-my-zsh
 
 #zplug 'b4b4r07/enhancd', use:init.sh
 zplug 'b4b4r07/zsh-vimode-visual', defer:3
