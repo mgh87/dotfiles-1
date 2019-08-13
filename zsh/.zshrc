@@ -7,6 +7,10 @@
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 
+# Set keybindings to emacs idependent of editor
+# TODO check if vi is selected and only rebind then
+bindkey -e
+
 # =============================================================================
 #                                   Plugins
 # =============================================================================
@@ -123,16 +127,17 @@ zplug 'plugins/docker', from:oh-my-zsh
 zplug 'plugins/docker-compose', from:oh-my-zsh
 zplug 'plugins/docker-machine', from:oh-my-zsh
 
-#zplug 'b4b4r07/enhancd', use:init.sh
-zplug 'b4b4r07/zsh-vimode-visual', defer:3
 # Using branch 'next' introduces a color regression, so we fall back to master
 # ofr now. See https://github.com/bhilburn/powerlevel9k/pull/703 for details.
 #zplug 'bhilburn/powerlevel9k', use:powerlevel9k.zsh-theme, at:next
 zplug 'Powerlevel9k/powerlevel9k', use:powerlevel9k.zsh-theme
+# Fuzzy search engine
 zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:"fzf", frozen:1
 zplug "junegunn/fzf", use:"shell/key-bindings.zsh"
+# ... to ../.. extention
 zplug 'knu/zsh-manydots-magic', use:manydots-magic, defer:3
 zplug 'seebi/dircolors-solarized', ignore:"*", as:plugin
+# backwards-jump by name 
 zplug 'Tarrasch/zsh-bd'
 zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-completions', defer:2
@@ -293,20 +298,19 @@ fi
 #                                Key Bindings
 # =============================================================================
 
-bindkey -v
 
 # Common CTRL bindings.
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 bindkey '^f' forward-word
-bindkey '^b' backward-word
+bindkey '^g' backward-word
 bindkey '^k' kill-line
 bindkey '^d' delete-char
-bindkey '^y' accept-and-hold
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
-bindkey '^w' backward-kill-word
-bindkey '^u' backward-kill-line
+#bindkey '^y' accept-and-hold
+#bindkey '^?' backward-delete-char
+#bindkey '^h' backward-delete-char
+#bindkey '^w' backward-kill-word
+#bindkey '^u' backward-kill-line
 
 # More convenient acceptance of suggested command line.
 if zplug check 'zsh-users/zsh-autosuggestions'; then
@@ -325,7 +329,7 @@ if zplug check 'zsh-users/zsh-history-substring-search'; then
 fi
 
 # Do not require a space when attempting to tab-complete.
-bindkey '^i' expand-or-complete-prefix
+#bindkey '^i' expand-or-complete-prefix
 
 # FZF
 if zplug check 'junegunn/fzf'; then
