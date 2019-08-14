@@ -87,6 +87,8 @@ zplug 'plugins/tmux', from:oh-my-zsh, if:'which tmux'
 zplug 'plugins/mvn', from:oh-my-zsh
 zplug 'plugins/jenv', from:oh-my-zsh
 zplug 'plugins/aws', from:oh-my-zsh
+# new ls
+zplug 'supercrabtree/k'
 
 # docker
 zplug 'plugins/docker', from:oh-my-zsh
