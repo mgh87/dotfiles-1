@@ -18,81 +18,49 @@ bindkey -e
 # powerlevel9k prompt theme
 DEFAULT_USER=$USER
 POWERLEVEL9K_MODE='nerdfont-complete'
-#POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
-#POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-POWERLEVEL9K_DIR_PATH_SEPARATOR="%F{cyan}/%F{blue}"
-POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=''
-POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=''
-POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=''
-POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=''
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%F{blue}\u256D\u2500%f"
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{blue}\u2570\uf460%f "
-POWERLEVEL9K_STATUS_OK=false
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator dir_joined
-                                   dir_writable_joined)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time vcs
-                                    background_jobs_joined time_joined
-                                    user_joined os_icon_joined host_joined)
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND="clear"
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND="green"
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND="clear"
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND="yellow"
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND="clear"
-POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND="yellow"
-POWERLEVEL9K_DIR_HOME_BACKGROUND="clear"
-POWERLEVEL9K_DIR_HOME_FOREGROUND="blue"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="clear"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="blue"
-POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND="clear"
-POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND="red"
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="clear"
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="cyan"
-POWERLEVEL9K_ROOT_INDICATOR_BACKGROUND="clear"
-POWERLEVEL9K_ROOT_INDICATOR_FOREGROUND="red"
-POWERLEVEL9K_STATUS_OK_BACKGROUND="clear"
-POWERLEVEL9K_STATUS_OK_FOREGROUND="green"
-POWERLEVEL9K_STATUS_ERROR_BACKGROUND="clear"
-POWERLEVEL9K_STATUS_ERROR_FOREGROUND="red"
-POWERLEVEL9K_TIME_FORMAT="%D{\uf073 %b %d \uf017 %H:%M}" #  Jun 15  09:32
-POWERLEVEL9K_TIME_FOREGROUND="blue"
-POWERLEVEL9K_TIME_BACKGROUND="clear"
-POWERLEVEL9K_TIME_FOREGROUND="blue"
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='clear'
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='magenta'
-POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND='clear'
-POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND='magenta'
-POWERLEVEL9K_USER_DEFAULT_BACKGROUND='clear'
-POWERLEVEL9K_USER_DEFAULT_FOREGROUND='cyan'
-POWERLEVEL9K_USER_ROOT_BACKGROUND='clear'
-POWERLEVEL9K_USER_ROOT_FOREGROUND='red'
-POWERLEVEL9K_USER_ICON="\uf415" # 
-POWERLEVEL9K_ROOT_ICON="\u26a1" # ⚡
-POWERLEVEL9K_HOST_LOCAL_BACKGROUND='clear'
-POWERLEVEL9K_HOST_LOCAL_FOREGROUND='cyan'
-POWERLEVEL9K_HOST_REMOTE_BACKGROUND='clear'
-POWERLEVEL9K_HOST_REMOTE_FOREGROUND='magenta'
-POWERLEVEL9K_HOST_ICON="\uF109 " # 
-POWERLEVEL9K_SSH_ICON="\uF489 "  # 
-POWERLEVEL9K_OS_ICON_BACKGROUND="clear"
-POWERLEVEL9K_OS_ICON_FOREGROUND="grey"
 
-# zsh-syntax-highlighting
+#POWERLEVEL9K_MODE="awesome-fontconfig"
+
+POWERLEVEL9K_FOLDER_ICON=""
+#POWERLEVEL9K_HOME_SUB_ICON="$(print_icon "HOME_ICON")"
+#POWERLEVEL9K_DIR_PATH_SEPARATOR=" $(print_icon "LEFT_SUBSEGMENT_SEPARATOR") "
+
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
+
+POWERLEVEL9K_DIR_OMIT_FIRST_CHARACTER=true
+
+POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND='black'
+POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND='178'
+POWERLEVEL9K_NVM_BACKGROUND="238"
+POWERLEVEL9K_NVM_FOREGROUND="green"
+POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="blue"
+POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND="015"
+
+POWERLEVEL9K_TIME_BACKGROUND='255'
+#POWERLEVEL9K_COMMAND_TIME_FOREGROUND='gray'
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='245'
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='black'
+
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator context dir dir_writable vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time time)
+POWERLEVEL9K_SHOW_CHANGESET=true
+
+HYPHEN_INSENSITIVE="true"
+COMPLETION_WAITING_DOTS="true"
+# /!\ do not use with zsh-autosuggestions
+
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
 typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[path]='fg=blue'
-ZSH_HIGHLIGHT_STYLES[path_pathseparator]='fg=cyan'
-ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
-ZSH_HIGHLIGHT_STYLES[builtin]='fg=cyan'
-ZSH_HIGHLIGHT_STYLES[function]='fg=cyan'
-ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=yellow'
-ZSH_HIGHLIGHT_STYLES[redirection]='fg=magenta'
-ZSH_HIGHLIGHT_STYLES[bracket-level-1]='fg=cyan,bold'
-ZSH_HIGHLIGHT_STYLES[bracket-level-2]='fg=green,bold'
-ZSH_HIGHLIGHT_STYLES[bracket-level-3]='fg=magenta,bold'
-ZSH_HIGHLIGHT_STYLES[bracket-level-4]='fg=yellow,bold'
+ZSH_HIGHLIGHT_STYLES[cursor]='bold'
+
+ZSH_HIGHLIGHT_STYLES[alias]='fg=green,bold'
+ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green,bold'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=green,bold'
+ZSH_HIGHLIGHT_STYLES[function]='fg=green,bold'
+ZSH_HIGHLIGHT_STYLES[command]='fg=green,bold'
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=green,bold'
+ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=green,bold'
 
 if [[ ! -d "${ZPLUG_HOME}" ]]; then
   if [[ ! -d ~/.zplug ]]; then
@@ -127,16 +95,15 @@ zplug 'plugins/docker', from:oh-my-zsh
 zplug 'plugins/docker-compose', from:oh-my-zsh
 zplug 'plugins/docker-machine', from:oh-my-zsh
 
-# Using branch 'next' introduces a color regression, so we fall back to master
-# ofr now. See https://github.com/bhilburn/powerlevel9k/pull/703 for details.
-#zplug 'bhilburn/powerlevel9k', use:powerlevel9k.zsh-theme, at:next
-zplug 'Powerlevel9k/powerlevel9k', use:powerlevel9k.zsh-theme
+# theme
+zplug romkatv/powerlevel10k, use:powerlevel10k.zsh-theme
+
 # Fuzzy search engine
 zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:"fzf", frozen:1
 zplug "junegunn/fzf", use:"shell/key-bindings.zsh"
 # ... to ../.. extention
 zplug 'knu/zsh-manydots-magic', use:manydots-magic, defer:3
-zplug 'seebi/dircolors-solarized', ignore:"*", as:plugin
+#zplug 'seebi/dircolors-solarized', ignore:"*", as:plugin
 # backwards-jump by name 
 zplug 'Tarrasch/zsh-bd'
 zplug 'zsh-users/zsh-autosuggestions'
@@ -154,25 +121,25 @@ fi
 
 zplug load
 
-if zplug check 'seebi/dircolors-solarized'; then
-  if which gdircolors > /dev/null 2>&1; then
-    alias dircolors='gdircolors'
-  fi
-  if which dircolors > /dev/null 2>&1; then
-    scheme='dircolors.256dark'
-    eval $(dircolors $ZPLUG_HOME/repos/seebi/dircolors-solarized/$scheme)
-  fi
-fi
+#if zplug check 'seebi/dircolors-solarized'; then
+#  if which gdircolors > /dev/null 2>&1; then
+#    alias dircolors='gdircolors'
+#  fi
+#  if which dircolors > /dev/null 2>&1; then
+#    scheme='dircolors.256dark'
+#    eval $(dircolors $ZPLUG_HOME/repos/seebi/dircolors-solarized/$scheme)
+#  fi
+#fi
 
-if zplug check 'zsh-users/zsh-autosuggestions'; then
-  # Enable asynchronous fetching of suggestions.
-  ZSH_AUTOSUGGEST_USE_ASYNC=1
-  # For some reason, the offered completion winds up having the same color as
-  # the terminal background color (when using a dark profile). Therefore, we
-  # switch to gray.
-  # See https://github.com/zsh-users/zsh-autosuggestions/issues/182.
-  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=gray'
-fi
+#if zplug check 'zsh-users/zsh-autosuggestions'; then
+#  # Enable asynchronous fetching of suggestions.
+#  ZSH_AUTOSUGGEST_USE_ASYNC=1
+#  # For some reason, the offered completion winds up having the same color as
+#  # the terminal background color (when using a dark profile). Therefore, we
+#  # switch to gray.
+#  # See https://github.com/zsh-users/zsh-autosuggestions/issues/182.
+#  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=gray'
+#fi
 
 # Our custom version of oh-my-zsh's globalias plugin. Unlike the OMZ version,
 # we do not use the `expand-word' widget and only expand a few whitelisted
@@ -196,10 +163,10 @@ globalias() {
   fi
   zle self-insert
 }
-zle -N globalias
-bindkey -M emacs ' ' globalias
-bindkey -M viins ' ' globalias
-bindkey -M isearch ' ' magic-space # normal space during searches
+#zle -N globalias
+#bindkey -M emacs ' ' globalias
+#bindkey -M viins ' ' globalias
+#bindkey -M isearch ' ' magic-space # normal space during searches
 
 
 # =============================================================================
@@ -243,15 +210,15 @@ alias e="$EDITOR"
 alias v="$VISUAL"
 
 # Directory coloring
-if which gls > /dev/null 2>&1; then
+#if which gls > /dev/null 2>&1; then
   # Prefer GNU version, since it respects dircolors.
-  alias ls='gls --group-directories-first --color=auto'
-elif [[ $OSTYPE = (darwin|freebsd)* ]]; then
-  export CLICOLOR="YES" # Equivalent to passing -G to ls.
-  export LSCOLORS="exgxdHdHcxaHaHhBhDeaec"
-else
-  alias ls='ls --group-directories-first --color=auto'
-fi
+#  alias ls='gls --group-directories-first --color=auto'
+#elif [[ $OSTYPE = (darwin|freebsd)* ]]; then
+#  export CLICOLOR="YES" # Equivalent to passing -G to ls.
+#  export LSCOLORS="exgxdHdHcxaHaHhBhDeaec"
+#else
+#  alias ls='ls --group-directories-first --color=auto'
+#fi
 
 # Directory management
 alias la='ls -a'
@@ -313,63 +280,63 @@ bindkey '^d' delete-char
 #bindkey '^u' backward-kill-line
 
 # More convenient acceptance of suggested command line.
-if zplug check 'zsh-users/zsh-autosuggestions'; then
-  bindkey '^ ' autosuggest-execute
-fi
+#if zplug check 'zsh-users/zsh-autosuggestions'; then
+#  bindkey '^ ' autosuggest-execute
+#fi
 
 # History
-if zplug check 'zsh-users/zsh-history-substring-search'; then
-  zmodload zsh/terminfo
-  bindkey "$terminfo[kcuu1]" history-substring-search-up
-  bindkey "$terminfo[kcud1]" history-substring-search-down
-  bindkey '^p' history-substring-search-up
-  bindkey '^n' history-substring-search-down
-  bindkey -M vicmd 'k' history-substring-search-up
-  bindkey -M vicmd 'j' history-substring-search-down
-fi
+#if zplug check 'zsh-users/zsh-history-substring-search'; then
+#  zmodload zsh/terminfo
+#  bindkey "$terminfo[kcuu1]" history-substring-search-up
+#  bindkey "$terminfo[kcud1]" history-substring-search-down
+#  bindkey '^p' history-substring-search-up
+#  bindkey '^n' history-substring-search-down
+#  bindkey -M vicmd 'k' history-substring-search-up
+ # bindkey -M vicmd 'j' history-substring-search-down
+#fi
 
 # Do not require a space when attempting to tab-complete.
 #bindkey '^i' expand-or-complete-prefix
 
 # FZF
-if zplug check 'junegunn/fzf'; then
-  export FZF_DEFAULT_OPTS='--height 30%
-      --color fg:223,bg:235,hl:208,fg+:229,bg+:237,hl+:167,border:237
-      --color info:246,prompt:214,pointer:214,marker:142,spinner:246,header:214'
-fi
+#if zplug check 'junegunn/fzf'; then
+#  export FZF_DEFAULT_OPTS='--height 30%
+#      --color fg:223,bg:235,hl:208,fg+:229,bg+:237,hl+:167,border:237
+#      --color info:246,prompt:214,pointer:214,marker:142,spinner:246,header:214'
+#fi
 
 # =============================================================================
 #                                 Completions
 # =============================================================================
 
 # case-insensitive (all), partial-word and then substring completion
-zstyle ':completion:*' matcher-list \
-  'm:{a-zA-Z}={A-Za-z}' \
-  'r:|[._-]=* r:|=*' \
-  'l:|=* r:|=*'
+#zstyle ':completion:*' matcher-list \
+#  'm:{a-zA-Z}={A-Za-z}' \
+#  'r:|[._-]=* r:|=*' \
+#  'l:|=* r:|=*'
 
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+#zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # When doing `cd ../<TAB>`, don't offer the current directory as an option.
-zstyle ':completion:*:cd:*' ignore-parents parent pwd
+#zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
 # Show a menu (with arrow keys) to select the process to kill.
-zstyle ':completion:*:*:kill:*' menu yes select
-zstyle ':completion:*:kill:*'   force-list always
+#zstyle ':completion:*:*:kill:*' menu yes select
+#zstyle ':completion:*:kill:*'   force-list always
 
 # =============================================================================
 #                                    Other
 # =============================================================================
 
 # Utility that prints out lines that are common among $# files.
-intersect() {
-  local sort='sort -S 1G'
-  case $# in
-    (0) true;;
-    (2) $sort -u "$1"; $sort -u "$2";;
-    (*) $sort -u "$1"; shift; intersection "$@";;
-  esac | $sort | uniq -d
-}
+#intersect() {
+#  local sort='sort -S 1G'
+#  case $# in
+#    (0) true;;
+#    (2) $sort -u "$1"; $sort -u "$2";;
+#    (*) $sort -u "$1"; shift; intersection "$@";;
+#  esac | $sort | uniq -d
+#}
 
 # Changes an iTerm profile by sending a proprietary escape code that iTerm
 # intercepts. This function additionally updates ITERM_PROFILE environment
@@ -396,9 +363,9 @@ update() {
   brew upgrade
   brew cleanup
   # Ruby
-  gem update --system
-  gem update
-  gem cleanup
+#  gem update --system
+#  gem update
+#  gem cleanup
   # npm
   npm install npm -g
   npm update -g
