@@ -19,8 +19,6 @@ bindkey -e
 DEFAULT_USER=$USER
 POWERLEVEL9K_MODE='nerdfont-complete'
 
-#POWERLEVEL9K_MODE="awesome-fontconfig"
-
 POWERLEVEL9K_FOLDER_ICON=""
 #POWERLEVEL9K_HOME_SUB_ICON="$(print_icon "HOME_ICON")"
 #POWERLEVEL9K_DIR_PATH_SEPARATOR=" $(print_icon "LEFT_SUBSEGMENT_SEPARATOR") "
@@ -96,14 +94,14 @@ zplug 'plugins/docker-compose', from:oh-my-zsh
 zplug 'plugins/docker-machine', from:oh-my-zsh
 
 # theme
-zplug romkatv/powerlevel10k, use:powerlevel10k.zsh-theme
+zplug 'romkatv/powerlevel10k', use:powerlevel10k.zsh-theme
 
 # Fuzzy search engine
 zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:"fzf", frozen:1
 zplug "junegunn/fzf", use:"shell/key-bindings.zsh"
 # ... to ../.. extention
 zplug 'knu/zsh-manydots-magic', use:manydots-magic, defer:3
-#zplug 'seebi/dircolors-solarized', ignore:"*", as:plugin
+zplug 'seebi/dircolors-solarized', ignore:"*", as:plugin
 # backwards-jump by name 
 zplug 'Tarrasch/zsh-bd'
 zplug 'zsh-users/zsh-autosuggestions'
@@ -112,7 +110,7 @@ zplug 'zsh-users/zsh-history-substring-search'
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 
 #mgh custom
-zplug "lib/directories", from:oh-my-zsh
+zplug "lib/*", from:oh-my-zsh
 
 
 if ! zplug check; then
@@ -121,15 +119,15 @@ fi
 
 zplug load
 
-#if zplug check 'seebi/dircolors-solarized'; then
-#  if which gdircolors > /dev/null 2>&1; then
-#    alias dircolors='gdircolors'
-#  fi
-#  if which dircolors > /dev/null 2>&1; then
-#    scheme='dircolors.256dark'
-#    eval $(dircolors $ZPLUG_HOME/repos/seebi/dircolors-solarized/$scheme)
-#  fi
-#fi
+if zplug check 'seebi/dircolors-solarized'; then
+  if which gdircolors > /dev/null 2>&1; then
+    alias dircolors='gdircolors'
+  fi
+  if which dircolors > /dev/null 2>&1; then
+    scheme='dircolors.256dark'
+    eval $(dircolors $ZPLUG_HOME/repos/seebi/dircolors-solarized/$scheme)
+  fi
+fi
 
 #if zplug check 'zsh-users/zsh-autosuggestions'; then
 #  # Enable asynchronous fetching of suggestions.
@@ -210,15 +208,15 @@ alias e="$EDITOR"
 alias v="$VISUAL"
 
 # Directory coloring
-#if which gls > /dev/null 2>&1; then
+if which gls > /dev/null 2>&1; then
   # Prefer GNU version, since it respects dircolors.
-#  alias ls='gls --group-directories-first --color=auto'
-#elif [[ $OSTYPE = (darwin|freebsd)* ]]; then
-#  export CLICOLOR="YES" # Equivalent to passing -G to ls.
-#  export LSCOLORS="exgxdHdHcxaHaHhBhDeaec"
-#else
-#  alias ls='ls --group-directories-first --color=auto'
-#fi
+  alias ls='gls --group-directories-first --color=auto'
+elif [[ $OSTYPE = (darwin|freebsd)* ]]; then
+  export CLICOLOR="YES" # Equivalent to passing -G to ls.
+  export LSCOLORS="exgxdHdHcxaHaHhBhDeaec"
+else
+  alias ls='ls --group-directories-first --color=auto'
+fi
 
 # Directory management
 alias la='ls -a'
