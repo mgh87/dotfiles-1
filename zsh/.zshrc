@@ -113,8 +113,9 @@ zplug 'zsh-users/zsh-completions', defer:2
 zplug 'zsh-users/zsh-history-substring-search'
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 
-#mgh custom
-zplug "lib/*", from:oh-my-zsh
+# loading parts of lib from oh-my-zsh i want
+zplug "lib/directories", from:oh-my-zsh
+zplug "lib/completion", from:oh-my-zsh
 
 
 if ! zplug check; then
@@ -364,10 +365,6 @@ update() {
   # Homebrew
   brew upgrade
   brew cleanup
-  # Ruby
-#  gem update --system
-#  gem update
-#  gem cleanup
   # npm
   npm install npm -g
   npm update -g
