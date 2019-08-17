@@ -119,6 +119,17 @@ zplug "lib/directories", from:oh-my-zsh
 COMPLETION_WAITING_DOTS=false
 zplug "lib/completion", from:oh-my-zsh
 
+# Emoji-CLI
+#
+# Emojis for the command line. Yes, this is absolutely needed.
+# requires brew install emojify on mac
+#
+# Website: https://github.com/b4b4r07/emoji-cli
+zplug "b4b4r07/emoji-cli", on:"stedolan/jq", defer:2
+zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
+
+# Emojis for the command line, also super important.
+##zplug "mrowa44/emojify", as:command, use:emojify
 
 if ! zplug check; then
   zplug install
