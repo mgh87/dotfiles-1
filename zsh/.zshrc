@@ -42,8 +42,13 @@ POWERLEVEL9K_AWS_BACKGROUND='orange1'
 POWERLEVEL9K_AWS_FOREGROUND='black'
 
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
+POWERLEVEL9K_BATTERY_LEVEL_BACKGROUND=(red3 darkorange3 darkgoldenrod gold3 yellow3 chartreuse2 mediumspringgreen green3 green3 green4 darkgreen)
+POWERLEVEL9K_BATTERY_FOREGROUND='grey100'
+POWERLEVEL9K_BATTERY_STAGES='▁▂▃▄▅▆▇█'
+POWERLEVEL9K_BATTERY_VERBOSE='false'
+
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator context dir dir_writable vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time aws time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time aws time battery)
 POWERLEVEL9K_SHOW_CHANGESET=true
 
 HYPHEN_INSENSITIVE="true"
