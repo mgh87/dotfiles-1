@@ -136,6 +136,9 @@ zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
 # Emojis for the command line, also super important.
 ##zplug "mrowa44/emojify", as:command, use:emojify
 
+## suggestiom by hans
+zplug "MichaelAquilina/zsh-you-should-use"
+
 if ! zplug check; then
   zplug install
 fi
