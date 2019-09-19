@@ -155,16 +155,6 @@ if zplug check 'seebi/dircolors-solarized'; then
   fi
 fi
 
-#if zplug check 'zsh-users/zsh-autosuggestions'; then
-#  # Enable asynchronous fetching of suggestions.
-#  ZSH_AUTOSUGGEST_USE_ASYNC=1
-#  # For some reason, the offered completion winds up having the same color as
-#  # the terminal background color (when using a dark profile). Therefore, we
-#  # switch to gray.
-#  # See https://github.com/zsh-users/zsh-autosuggestions/issues/182.
-#  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=gray'
-#fi
-
 # Our custom version of oh-my-zsh's globalias plugin. Unlike the OMZ version,
 # we do not use the `expand-word' widget and only expand a few whitelisted
 # aliases.
@@ -298,74 +288,7 @@ bindkey '^f' forward-word
 bindkey '^g' backward-word
 bindkey '^k' kill-line
 bindkey '^d' delete-char
-#bindkey '^y' accept-and-hold
-#bindkey '^?' backward-delete-char
-#bindkey '^h' backward-delete-char
-#bindkey '^w' backward-kill-word
-#bindkey '^u' backward-kill-line
 
-# More convenient acceptance of suggested command line.
-#if zplug check 'zsh-users/zsh-autosuggestions'; then
-#  bindkey '^ ' autosuggest-execute
-#fi
-
-# History
-#if zplug check 'zsh-users/zsh-history-substring-search'; then
-#  zmodload zsh/terminfo
-#  bindkey "$terminfo[kcuu1]" history-substring-search-up
-#  bindkey "$terminfo[kcud1]" history-substring-search-down
-#  bindkey '^p' history-substring-search-up
-#  bindkey '^n' history-substring-search-down
-#  bindkey -M vicmd 'k' history-substring-search-up
- # bindkey -M vicmd 'j' history-substring-search-down
-#fi
-
-# Do not require a space when attempting to tab-complete.
-#bindkey '^i' expand-or-complete-prefix
-
-# FZF
-#if zplug check 'junegunn/fzf'; then
-#  export FZF_DEFAULT_OPTS='--height 30%
-#      --color fg:223,bg:235,hl:208,fg+:229,bg+:237,hl+:167,border:237
-#      --color info:246,prompt:214,pointer:214,marker:142,spinner:246,header:214'
-#fi
-
-# =============================================================================
-#                                 Completions
-# =============================================================================
-
-# case-insensitive (all), partial-word and then substring completion
-#zstyle ':completion:*' matcher-list \
-#  'm:{a-zA-Z}={A-Za-z}' \
-#  'r:|[._-]=* r:|=*' \
-#  'l:|=* r:|=*'
-
-#zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-# When doing `cd ../<TAB>`, don't offer the current directory as an option.
-#zstyle ':completion:*:cd:*' ignore-parents parent pwd
-
-# Show a menu (with arrow keys) to select the process to kill.
-#zstyle ':completion:*:*:kill:*' menu yes select
-#zstyle ':completion:*:kill:*'   force-list always
-
-# =============================================================================
-#                                    Other
-# =============================================================================
-
-# Utility that prints out lines that are common among $# files.
-#intersect() {
-#  local sort='sort -S 1G'
-#  case $# in
-#    (0) true;;
-#    (2) $sort -u "$1"; $sort -u "$2";;
-#    (*) $sort -u "$1"; shift; intersection "$@";;
-#  esac | $sort | uniq -d
-#}
-
-# Changes an iTerm profile by sending a proprietary escape code that iTerm
-# intercepts. This function additionally updates ITERM_PROFILE environment
-# variable.
 iterm-profile() {
   echo -ne "\033]50;SetProfile=$1\a"
   export ITERM_PROFILE="$1"
@@ -410,3 +333,4 @@ source $HOME/.aliases
 if [[ -f ~/.zshrc.local ]]; then
   source ~/.zshrc.local
 fi
+
