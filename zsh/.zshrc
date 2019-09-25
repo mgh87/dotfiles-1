@@ -118,11 +118,11 @@ zplug 'zsh-users/zsh-history-substring-search'
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 
 # loading parts of lib from oh-my-zsh i want
-zplug "lib/directories", from:oh-my-zsh
+zplug 'lib/directories', from:oh-my-zsh
 
 # removes annoying auto completion dots. credit hschne.at
 COMPLETION_WAITING_DOTS=false
-zplug "lib/completion", from:oh-my-zsh
+zplug 'lib/completion', from:oh-my-zsh
 
 # Emoji-CLI
 #
