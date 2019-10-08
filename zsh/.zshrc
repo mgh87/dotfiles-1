@@ -139,6 +139,9 @@ zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
 ## suggestiom by hans
 zplug "MichaelAquilina/zsh-you-should-use"
 
+## my plugin!
+zplug "mgh87/zsh-mgh-plugins"
+
 if ! zplug check; then
   zplug install
 fi
