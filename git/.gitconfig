@@ -1,17 +1,18 @@
 [alias]
-  prune = fetch --prune
-  cdiff = diff --cached
-  st = status --short
-  log1 = log --all --graph --decorate --oneline --abbrev-commit
-  glog = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset'
-  merge-branch = merge --log --no-commit --no-ff
-  push-this = push origin HEAD
-  fix-submodules = submodule update --recursive --init
-  recursive = "!sh -c 'for i in . `git submodule foreach -q --recursive pwd`; do cd $i && git $@; done' -"
-  recursive-sh = "!sh -c 'for i in . `git submodule foreach -q --recursive pwd`; do cd $i && $@; done' -"
+    prune = fetch --prune
+    cdiff = diff --cached
+    st = status --short
+    log1 = log --all --graph --decorate --oneline --abbrev-commit
+    glog = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset'
+    merge-branch = merge --log --no-commit --no-ff
+    push-this = push origin HEAD
+    fix-submodules = submodule update --recursive --init
+    recursive = "!sh -c 'for i in . `git submodule foreach -q --recursive pwd`; do cd $i && git $@; done' -"
+    recursive-sh = "!sh -c 'for i in . `git submodule foreach -q --recursive pwd`; do cd $i && $@; done' -"
+    pt = !git tag -l | xargs git tag -d && git fetch -t
 
 [branch]
- sort = -committerdate
+    sort = -committerdate
 
 [color]
 	diff = auto
@@ -19,13 +20,13 @@
 	branch = auto
 
 [diff]
-  tool = icdiff
+    tool = icdiff
 
 [difftool]
-  prompt = false
+    prompt = false
 
 [difftool "icdiff"]
-  cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
+    cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
 
 [filter "lfs"]
 	clean = git-lfs clean %f
@@ -36,7 +37,7 @@
 	tool = vimdiff
 
 [push]
-  followTags = true
+    followTags = true
 
 [rerere]
 	enabled = true
