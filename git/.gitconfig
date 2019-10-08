@@ -44,3 +44,5 @@
 [include]
 	path = ~/.gitconfig.private
 	path = ~/.gitconfig.work
+[init]
+	templatedir = ~/.git-templates
