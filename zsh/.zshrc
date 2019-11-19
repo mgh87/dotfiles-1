@@ -38,6 +38,36 @@ POWERLEVEL9K_TIME_BACKGROUND='255'
 #POWERLEVEL9K_COMMAND_TIME_FOREGROUND='gray'
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='245'
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='black'
+
+# view java version in projects with pom
+zsh_prompt_jenv() {
+  local java_version
+
+  myPwd=$(pwd)
+  while [ ! -z $myPwd ]; do 
+    if [ -f "$myPwd/pom.xml" ]; then
+      myPwd=""
+      pom_exist="true"
+    fi
+    myPwd=$(echo $myPwd | rev | cut -d'/' -f2- | rev);
+  done
+
+  if [ $commands[jenv]  ]; then
+    java_version=$(jenv local 2&>/dev/null)
+    if [[ -z "$java_version" ]]; then
+      java_version=$(jenv global 2&>/dev/null)
+    fi
+  fi
+
+  if [[ -n "$java_version" ]] && (( ${+pom_exist} )); then
+     echo "$java_version" "☕︎"
+  fi
+}
+
+POWERLEVEL9K_CUSTOM_JENV_BACKGROUND="green"
+POWERLEVEL9K_CUSTOM_JENV_FOREGROUND="238"
+POWERLEVEL9K_CUSTOM_JENV="zsh_prompt_jenv"
+
 POWERLEVEL9K_AWS_BACKGROUND='orange1'
 POWERLEVEL9K_AWS_FOREGROUND='black'
 
@@ -48,7 +78,7 @@ POWERLEVEL9K_BATTERY_STAGES='▁▂▃▄▅▆▇█'
 POWERLEVEL9K_BATTERY_VERBOSE='false'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator context dir dir_writable vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time aws time battery)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time custom_jenv aws time battery)
 POWERLEVEL9K_SHOW_CHANGESET=true
 
 HYPHEN_INSENSITIVE="true"
