@@ -35,13 +35,6 @@ set hlsearch            " Highlight search results.
 set showbreak=…         " Highlight non-wrapped lines.
 set showcmd             " Display incomplete command in bottom right corner.
 
-" Choose background based on terminal emulator color scheme.
-if $ITERM_PROFILE =~# "light"
-  set background=light
-else
-  set background=dark
-endif
-
 if has('gui_running')
     set columns=80
     set lines=25
@@ -68,8 +61,8 @@ set formatoptions=tcrqn " See :h 'fo-table for a detailed explanation.
 set nojoinspaces        " Don't insert two spaces when joining after [.?!].
 set copyindent          " Copy the structure of existing indentation
 set expandtab           " Expand tabs to spaces.
-set tabstop=4           " number of spaces for a <Tab>.
-"set softtabstop=2       " Number of spaces that a <Tab> counts for.
+"set tabstop=4           " number of spaces for a <Tab>.
+set softtabstop=4       " Number of spaces that a <Tab> counts for.
 set shiftwidth=4        " Tab indention
 "set textwidth=79        " Text width
 
@@ -100,18 +93,6 @@ nnoremap <F11> :set list!<CR>
 
 " Toggle paste mode.
 set pastetoggle=<F12>
-
-" Quicker navigation for non-wrapped lines.
-vmap <D-j> gj
-vmap <D-k> gk
-vmap <D-4> g$
-vmap <D-6> g^
-vmap <D-0> g^
-nmap <D-j> gj
-nmap <D-k> gk
-nmap <D-4> g$
-nmap <D-6> g^
-nmap <D-0> g^
 
 " Helper function to preserve history and cursor position.
 function! Preserve(command)

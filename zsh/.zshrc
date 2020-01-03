@@ -146,6 +146,7 @@ zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-completions', defer:2
 zplug 'zsh-users/zsh-history-substring-search'
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
+zplug "lukechilds/zsh-better-npm-completion", defer:2
 
 # loading parts of lib from oh-my-zsh i want
 zplug 'lib/directories', from:oh-my-zsh
