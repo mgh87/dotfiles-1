@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # =============================================================================
 #                          Pre-Plugin Configuration
 # =============================================================================
@@ -14,72 +21,6 @@ bindkey -e
 # =============================================================================
 #                                   Plugins
 # =============================================================================
-
-# powerlevel9k prompt theme
-DEFAULT_USER=$USER
-POWERLEVEL9K_MODE='nerdfont-complete'
-
-POWERLEVEL9K_FOLDER_ICON=""
-#POWERLEVEL9K_HOME_SUB_ICON="$(print_icon "HOME_ICON")"
-#POWERLEVEL9K_DIR_PATH_SEPARATOR=" $(print_icon "LEFT_SUBSEGMENT_SEPARATOR") "
-
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
-
-POWERLEVEL9K_DIR_OMIT_FIRST_CHARACTER=true
-
-POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND='black'
-POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND='178'
-POWERLEVEL9K_NVM_BACKGROUND="238"
-POWERLEVEL9K_NVM_FOREGROUND="green"
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="blue"
-POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND="015"
-
-POWERLEVEL9K_TIME_BACKGROUND='255'
-#POWERLEVEL9K_COMMAND_TIME_FOREGROUND='gray'
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='245'
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='black'
-
-# view java version in projects with pom
-zsh_prompt_jenv() {
-  local java_version
-
-  myPwd=$(pwd)
-  while [ ! -z $myPwd ]; do 
-    if [ -f "$myPwd/pom.xml" ]; then
-      myPwd=""
-      pom_exist="true"
-    fi
-    myPwd=$(echo $myPwd | rev | cut -d'/' -f2- | rev);
-  done
-
-  if [ $commands[jenv]  ]; then
-    java_version=$(jenv local 2&>/dev/null)
-    if [[ -z "$java_version" ]]; then
-      java_version=$(jenv global 2&>/dev/null)
-    fi
-  fi
-
-  if [[ -n "$java_version" ]] && (( ${+pom_exist} )); then
-     echo "$java_version" "☕︎"
-  fi
-}
-
-POWERLEVEL9K_CUSTOM_JENV_BACKGROUND="green"
-POWERLEVEL9K_CUSTOM_JENV_FOREGROUND="238"
-POWERLEVEL9K_CUSTOM_JENV="zsh_prompt_jenv"
-
-POWERLEVEL9K_AWS_BACKGROUND='orange1'
-POWERLEVEL9K_AWS_FOREGROUND='black'
-
-POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
-POWERLEVEL9K_BATTERY_LEVEL_BACKGROUND=(red3 darkorange3 darkgoldenrod gold3 yellow3 chartreuse2 mediumspringgreen green3 green3 green4 darkgreen)
-POWERLEVEL9K_BATTERY_FOREGROUND='grey100'
-POWERLEVEL9K_BATTERY_STAGES='▁▂▃▄▅▆▇█'
-POWERLEVEL9K_BATTERY_VERBOSE='false'
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator context dir dir_writable vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time custom_jenv aws time battery)
-POWERLEVEL9K_SHOW_CHANGESET=true
 
 HYPHEN_INSENSITIVE="true"
 # /!\ do not use with zsh-autosuggestions
@@ -250,84 +191,6 @@ setopt pushd_minus              # Reference stack entries with '-'.
 
 setopt extended_glob
 
-# =============================================================================
-#                                   Aliases
-# =============================================================================
-
-# Swift editing and file display.
-alias e="$EDITOR"
-alias v="$VISUAL"
-
-# Directory coloring
-if which gls > /dev/null 2>&1; then
-  # Prefer GNU version, since it respects dircolors.
-  alias ls='gls --group-directories-first --color=auto'
-elif [[ $OSTYPE = (darwin|freebsd)* ]]; then
-  export CLICOLOR="YES" # Equivalent to passing -G to ls.
-  export LSCOLORS="exgxdHdHcxaHaHhBhDeaec"
-else
-  alias ls='ls --group-directories-first --color=auto'
-fi
-
-# Directory management
-alias la='ls -a'
-alias ll='ls -l'
-alias lal='ls -al'
-alias dirs='dirs -v'
-push() { pushd $1 > /dev/null 2>&1; dirs -v; }
-pop() { popd > /dev/null 2>&1; dirs -v }
-
-# Generic command adaptations.
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-
-# OS-specific aliases
-if [[ $OSTYPE = darwin* ]]; then
-  # Lock screen (e.g., when leaving computer).
-  alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-  # Hide/show all desktop icons (useful when presenting)
-  alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false \
-    && killall Finder"
-  alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true \
-    && killall Finder"
-  # Combine PDFs on the command line.
-  pdfcat() {
-    if [[ $# -lt 2 ]]; then
-      echo "usage: $0 merged.pdf input0.pdf [input1.pdf ...]" > /dev/stderr
-      return 1
-    fi
-    local output="$1"
-    shift
-    # Try pdfunite first (from Homebrew package poppler), because it's much
-    # faster and doesn't perform stupid page rotations.
-    if which pdfunite > /dev/null 2>&1; then
-      pdfunite "$@" "$output"
-    else
-      local join='/System/Library/Automator/Combine PDF Pages.action/Contents/Resources/join.py'
-      "$join" -o "$output" "$@" && open "$output"
-    fi
-  }
-fi
-
-# =============================================================================
-#                                Key Bindings
-# =============================================================================
-
-
-# Common CTRL bindings.
-bindkey '^a' beginning-of-line
-bindkey '^e' end-of-line
-bindkey '^f' forward-word
-bindkey '^g' backward-word
-bindkey '^k' kill-line
-bindkey '^d' delete-char
-
-iterm-profile() {
-  echo -ne "\033]50;SetProfile=$1\a"
-  export ITERM_PROFILE="$1"
-}
-
 # Convenience function to update system applications and user packages.
 update() {
   # sudoe once
@@ -368,3 +231,5 @@ if [[ -f ~/.zshrc.local ]]; then
   source ~/.zshrc.local
 fi
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
