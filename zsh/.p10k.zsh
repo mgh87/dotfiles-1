@@ -42,7 +42,7 @@
       vcs                     # git status
       # =========================[ Line #2 ]=========================
       newline
-      # prompt_char           # prompt symbol
+      prompt_char           # prompt symbol
   )
 
   # The list of segments shown on the right. Fill it with less important segments.
@@ -95,7 +95,7 @@
       newline
       # public_ip             # public IP address
       # proxy                 # system-wide http/https/ftp proxy
-      # battery               # internal battery
+      battery                 # internal battery
       # example               # example user-defined segment (see prompt_example function below)
   )
 
@@ -459,7 +459,7 @@
   typeset -g POWERLEVEL9K_STATUS_OK=true
   typeset -g POWERLEVEL9K_STATUS_OK_VISUAL_IDENTIFIER_EXPANSION='✔'
   # typeset -g POWERLEVEL9K_STATUS_OK_FOREGROUND=2
-  # typeset -g POWERLEVEL9K_STATUS_OK_BACKGROUND=0
+  typeset -g POWERLEVEL9K_STATUS_OK_BACKGROUND=237
 
   # Status when some part of a pipe command fails but the overall exit status is zero. It may look
   # like this: 1|0.
@@ -507,8 +507,8 @@
 
   #######################[ background_jobs: presence of background jobs ]#######################
   # Background jobs color.
-  # typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=6
-  # typeset -g POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND=0
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=0
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND=178
   # Don't show the number of background jobs.
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=false
   # Icon to show when there are background jobs.
@@ -798,13 +798,13 @@
 
   ###############[ jenv: java version from jenv (https://github.com/jenv/jenv) ]################
   # Java color.
-  # typeset -g POWERLEVEL9K_JENV_FOREGROUND=1
-  # typeset -g POWERLEVEL9K_JENV_BACKGROUND=7
+  typeset -g POWERLEVEL9K_JENV_FOREGROUND=2
+  typeset -g POWERLEVEL9K_JENV_BACKGROUND=238
   # Hide java version if it doesn't come from one of these sources.
   typeset -g POWERLEVEL9K_JENV_SOURCES=(shell local global)
   # If set to false, hide java version if it's the same as global:
   # $(jenv version-name) == $(jenv global).
-  typeset -g POWERLEVEL9K_JENV_PROMPT_ALWAYS_SHOW=false
+  typeset -g POWERLEVEL9K_JENV_PROMPT_ALWAYS_SHOW=true
   # Custom icon.
   # typeset -g POWERLEVEL9K_JENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
@@ -829,8 +829,8 @@
 
   #[ aws: aws profile (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html) ]#
   # AWS profile color.
-  # typeset -g POWERLEVEL9K_AWS_DEFAULT_FOREGROUND=7
-  # typeset -g POWERLEVEL9K_AWS_DEFAULT_BACKGROUND=1
+  typeset -g POWERLEVEL9K_AWS_DEFAULT_FOREGROUND=214
+  typeset -g POWERLEVEL9K_AWS_DEFAULT_BACKGROUND=0
   # POWERLEVEL9K_AWS_CLASSES is an array with even number of elements. The first element
   # in each pair defines a pattern against which the current AWS profile gets matched.
   # More specifically, it's P9K_CONTENT prior to the application of context expansion (see below)
@@ -1063,14 +1063,14 @@
   typeset -g POWERLEVEL9K_BATTERY_STAGES=$'\uf58d\uf579\uf57a\uf57b\uf57c\uf57d\uf57e\uf57f\uf580\uf581\uf578'
   # Don't show the remaining time to charge/discharge.
   typeset -g POWERLEVEL9K_BATTERY_VERBOSE=false
-  # typeset -g POWERLEVEL9K_BATTERY_BACKGROUND=0
+  typeset -g POWERLEVEL9K_BATTERY_BACKGROUND=237
 
   ####################################[ time: current time ]####################################
   # Current time color.
   # typeset -g POWERLEVEL9K_TIME_FOREGROUND=0
   # typeset -g POWERLEVEL9K_TIME_BACKGROUND=7
   # Format for the current time: 09:51:02. See `man 3 strftime`.
-  typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M:%S}'
+  typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M}'
   # If set to true, time will update when you hit enter. This way prompts for the past
   # commands will contain the start times of their commands as opposed to the default
   # behavior where they contain the end times of their preceding commands.
@@ -1147,3 +1147,14 @@
 
 (( ${#p10k_config_opts} )) && setopt ${p10k_config_opts[@]}
 'builtin' 'unset' 'p10k_config_opts'
+
+function p10k-on-pre-prompt() {
+  emulate -L zsh -o extended_glob
+  # If there is pom.xml or gradle.build in the current directory or above,
+  # show jenv. Otherwise hide it.
+  if [[ -n ./(../)#(pom.xml|gradle.build)(#qN) ]]; then
+    p10k display '1/right/jenv'=show
+  else
+    p10k display '1/right/jenv'=hide
+  fi
+}

@@ -6,3 +6,60 @@ alias gdlb=gitDeleteLocalBranches
 alias gfdlb=gitForceDeleteLocalBranches
 alias qlf='qlmanage -p "$@" >& /dev/null'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+
+
+# Swift editing and file display.
+alias e="$EDITOR"
+alias v="$VISUAL"
+
+# Directory coloring
+if which gls > /dev/null 2>&1; then
+  # Prefer GNU version, since it respects dircolors.
+  alias ls='gls --group-directories-first --color=auto'
+elif [[ $OSTYPE = (darwin|freebsd)* ]]; then
+  export CLICOLOR="YES" # Equivalent to passing -G to ls.
+  export LSCOLORS="exgxdHdHcxaHaHhBhDeaec"
+else
+  alias ls='ls --group-directories-first --color=auto'
+fi
+
+# Directory management
+alias la='ls -a'
+alias ll='ls -l'
+alias lal='ls -al'
+alias dirs='dirs -v'
+push() { pushd $1 > /dev/null 2>&1; dirs -v; }
+pop() { popd > /dev/null 2>&1; dirs -v }
+
+# Generic command adaptations.
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# OS-specific aliases
+if [[ $OSTYPE = darwin* ]]; then
+  # Lock screen (e.g., when leaving computer).
+  alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+  # Hide/show all desktop icons (useful when presenting)
+  alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false \
+    && killall Finder"
+  alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true \
+    && killall Finder"
+  # Combine PDFs on the command line.
+  pdfcat() {
+    if [[ $# -lt 2 ]]; then
+      echo "usage: $0 merged.pdf input0.pdf [input1.pdf ...]" > /dev/stderr
+      return 1
+    fi
+    local output="$1"
+    shift
+    # Try pdfunite first (from Homebrew package poppler), because it's much
+    # faster and doesn't perform stupid page rotations.
+    if which pdfunite > /dev/null 2>&1; then
+      pdfunite "$@" "$output"
+    else
+      local join='/System/Library/Automator/Combine PDF Pages.action/Contents/Resources/join.py'
+      "$join" -o "$output" "$@" && open "$output"
+    fi
+  }
+fi
