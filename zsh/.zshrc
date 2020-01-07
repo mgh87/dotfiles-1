@@ -226,6 +226,9 @@ source $HOME/.aliases
 #                                   Startup
 # =============================================================================
 
+# Load nodenv autocompletion
+eval "$(nodenv init -)"
+
 # Source local customizations.
 if [[ -f ~/.zshrc.local ]]; then
   source ~/.zshrc.local
