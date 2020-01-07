@@ -60,8 +60,8 @@
       pyenv                   # python environment (https://github.com/pyenv/pyenv)
       goenv                   # go environment (https://github.com/syndbg/goenv)
       nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
-      nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
-      nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
+      # nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
+      # nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
       # node_version          # node.js version
       # go_version            # go version (https://golang.org)
       # rust_version          # rustc version (https://www.rust-lang.org)
@@ -694,8 +694,8 @@
 
   ##########[ nodenv: node.js version from nodenv (https://github.com/nodenv/nodenv) ]##########
   # Nodenv color.
-  # typeset -g POWERLEVEL9K_NODENV_FOREGROUND=2
-  # typeset -g POWERLEVEL9K_NODENV_BACKGROUND=0
+  typeset -g POWERLEVEL9K_NODENV_FOREGROUND=28
+  typeset -g POWERLEVEL9K_NODENV_BACKGROUND=15
   # Don't show node version if it's the same as global: $(nodenv version-name) == $(nodenv global).
   typeset -g POWERLEVEL9K_NODENV_PROMPT_ALWAYS_SHOW=false
   # Custom icon.
