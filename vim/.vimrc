@@ -170,7 +170,6 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'jalvesaq/Nvim-R'
-Plug 'chriskempson/base16-vim'
 call plug#end()
 
 " -- fzf ---------------------------------------------------------------------
@@ -207,14 +206,6 @@ let g:tmuxline_preset = {
   \'win'     : ['#I', '#W'],
   \'cwin'    : ['#I', '#W'],
   \'options' : {'status-justify' : 'left'}}
-
-" -- colors ------------------------------------------------------------------
-
-if has("termguicolors")
-  set termguicolors
-endif
-
-colorscheme base16-3024
 
 " -- Tmux Navigator ----------------------------------------------------------
 
