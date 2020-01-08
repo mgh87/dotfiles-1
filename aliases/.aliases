@@ -25,7 +25,6 @@ fi
 
 # Directory management
 alias la='ls -a'
-alias ll='ls -l'
 alias lal='ls -al'
 alias dirs='dirs -v'
 push() { pushd $1 > /dev/null 2>&1; dirs -v; }
