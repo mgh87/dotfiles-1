@@ -697,7 +697,7 @@
   typeset -g POWERLEVEL9K_NODENV_FOREGROUND=28
   typeset -g POWERLEVEL9K_NODENV_BACKGROUND=15
   # Don't show node version if it's the same as global: $(nodenv version-name) == $(nodenv global).
-  typeset -g POWERLEVEL9K_NODENV_PROMPT_ALWAYS_SHOW=false
+  typeset -g POWERLEVEL9K_NODENV_PROMPT_ALWAYS_SHOW=true
   # Custom icon.
   # typeset -g POWERLEVEL9K_NODENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
@@ -1156,5 +1156,11 @@ function p10k-on-pre-prompt() {
     p10k display '1/right/jenv'=show
   else
     p10k display '1/right/jenv'=hide
+  fi
+
+  if [[ -n ./(../)#(package.json)(#qN) ]]; then
+    p10k display '1/right/nodenv'=show
+  else
+    p10k display '1/right/nodenv'=hide
   fi
 }
