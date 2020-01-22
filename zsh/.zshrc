@@ -102,8 +102,9 @@ zplug 'lib/completion', from:oh-my-zsh
 # requires brew install emojify on mac
 #
 # Website: https://github.com/b4b4r07/emoji-cli
-zplug "b4b4r07/emoji-cli", on:"stedolan/jq", defer:2
-zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
+# TODO get it running properly
+# zplug "b4b4r07/emoji-cli", on:"stedolan/jq", defer:2
+# zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
 
 # Emojis for the command line, also super important.
 ##zplug "mrowa44/emojify", as:command, use:emojify
@@ -119,16 +120,6 @@ if ! zplug check; then
 fi
 
 zplug load
-
-if zplug check 'seebi/dircolors-solarized'; then
-  if which gdircolors > /dev/null 2>&1; then
-    alias dircolors='gdircolors'
-  fi
-  if which dircolors > /dev/null 2>&1; then
-    scheme='dircolors.256dark'
-    eval $(dircolors $ZPLUG_HOME/repos/seebi/dircolors-solarized/$scheme)
-  fi
-fi
 
 # Our custom version of oh-my-zsh's globalias plugin. Unlike the OMZ version,
 # we do not use the `expand-word' widget and only expand a few whitelisted
