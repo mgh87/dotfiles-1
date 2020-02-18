@@ -95,6 +95,7 @@ zplug 'lib/directories', from:oh-my-zsh
 # removes annoying auto completion dots. credit hschne.at
 COMPLETION_WAITING_DOTS=false
 zplug 'lib/completion', from:oh-my-zsh
+zplug 'gradle/gradle-completion'
 
 # Emoji-CLI
 #
