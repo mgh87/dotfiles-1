@@ -62,8 +62,10 @@ zplug 'plugins/fancy-ctrl-z', from:oh-my-zsh
 zplug 'plugins/git', from:oh-my-zsh, if:'which git'
 zplug 'plugins/tmux', from:oh-my-zsh, if:'which tmux'
 zplug 'plugins/mvn', from:oh-my-zsh
+zplug 'plugins/gradle', from:oh-my-zsh
 zplug 'plugins/jenv', from:oh-my-zsh
 zplug 'plugins/aws', from:oh-my-zsh
+zplug 'plugins/rbenv', from:oh-my-zsh
 # new ls
 zplug 'supercrabtree/k'
 

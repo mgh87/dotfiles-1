@@ -42,6 +42,9 @@ case $OSTYPE in
     if [[ -d /usr/local/opt/ruby/bin ]]; then
       path=(/usr/local/opt/ruby/bin $path)
     fi
+    if [[ -d /usr/local/opt/avr-gcc@8/bin ]]; then
+      path=(/usr/local/opt/avr-gcc@8/bin $path)
+    fi
     ;;
 esac
 

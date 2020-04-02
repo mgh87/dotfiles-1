@@ -4458,6 +4458,13 @@
 			<key>Text</key>
 			<string></string>
 		</dict>
+		<key>0x20-0x80000</key>
+		<dict>
+			<key>Action</key>
+			<integer>12</integer>
+			<key>Text</key>
+			<string> </string>
+		</dict>
 		<key>0x9-0x40000</key>
 		<dict>
 			<key>Action</key>
@@ -4639,7 +4646,7 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>530 476 620 392 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>873 198 786 762 0 0 1680 1027 </string>
+	<string>1925 516 1057 575 1680 0 2560 1417 </string>
 	<key>NeverWarnAboutShortLivedSessions_8CBCB7EF-F1E2-4EF0-A5B6-16656C2C24F1</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_8CBCB7EF-F1E2-4EF0-A5B6-16656C2C24F1_selection</key>
@@ -6707,6 +6714,7 @@
 		<string>3.3.1</string>
 		<string>3.3.3</string>
 		<string>3.3.5</string>
+		<string>3.3.7</string>
 		<string>3.3.0</string>
 		<string>3.3.2</string>
 		<string>3.3.4</string>
@@ -6721,16 +6729,16 @@
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{4240, 0}, {2560, 1440}}</string>
+		<string>{{1680, 0}, {2560, 1440}}</string>
 		<key>topLeft</key>
-		<string>{5182, 1080}</string>
+		<string>{2887, 902}</string>
 	</dict>
 	<key>NoSyncInstallationId</key>
 	<string>39DC3A56-1DC2-4D91-B841-959DC5A59C99</string>
 	<key>NoSyncLastTipTime</key>
 	<real>596727969.27798998</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>61</integer>
+	<integer>62</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -7588,11 +7596,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-11-19T10:51:00Z</date>
+	<date>2020-02-14T12:11:43Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>
-	<true/>
+	<false/>
 	<key>ShowFullScreenTabBar</key>
 	<false/>
 	<key>SmartPlacement</key>
@@ -7618,7 +7626,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.6</string>
+	<string>3.3.7</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>

@@ -6,6 +6,7 @@ alias gdlb=gitDeleteLocalBranches
 alias gfdlb=gitForceDeleteLocalBranches
 alias qlf='qlmanage -p "$@" >& /dev/null'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias aws-ssm-ec2='aws ssm start-session --target'
 
 
 # Swift editing and file display.
