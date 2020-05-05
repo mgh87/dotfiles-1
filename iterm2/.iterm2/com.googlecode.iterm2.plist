@@ -8,12 +8,16 @@
 	<true/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
+	<key>ApplePressAndHoldEnabled</key>
+	<false/>
 	<key>AppleScrollAnimationEnabled</key>
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
 	<integer>1</integer>
 	<key>AppleWindowTabbingMode</key>
 	<string>manual</string>
+	<key>AutoCommandHistory</key>
+	<true/>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>Solarized Dark - Patched</key>
@@ -4593,9 +4597,13 @@
 	<key>MaxVertically</key>
 	<true/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Downloads</string>
+	<string>~/Documents</string>
+	<key>NSNavLastUserSetHideExtensionButtonState</key>
+	<true/>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{799, 448}</string>
+	<key>NSNavPanelExpandedSizeForSaveMode</key>
+	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -4640,13 +4648,13 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>0 152 224 275 0 0 1680 1027 </string>
 	<key>NSWindow Frame NSNavPanelAutosaveName</key>
-	<string>4609 506 799 448 4240 0 2560 1417 </string>
+	<string>-1454 927 347 181 0 0 1680 1027 </string>
 	<key>NSWindow Frame SUAutomaticUpdateAlert</key>
-	<string>532 639 616 174 0 0 1680 1027 </string>
+	<string>652 662 616 174 0 0 1920 1057 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>530 476 620 392 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1925 516 1057 575 1680 0 2560 1417 </string>
+	<string>-2472 -103 2465 1289 -2560 -197 2560 1417 </string>
 	<key>NeverWarnAboutShortLivedSessions_8CBCB7EF-F1E2-4EF0-A5B6-16656C2C24F1</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_8CBCB7EF-F1E2-4EF0-A5B6-16656C2C24F1_selection</key>
@@ -6715,6 +6723,7 @@
 		<string>3.3.3</string>
 		<string>3.3.5</string>
 		<string>3.3.7</string>
+		<string>3.3.9</string>
 		<string>3.3.0</string>
 		<string>3.3.2</string>
 		<string>3.3.4</string>
@@ -6729,16 +6738,16 @@
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{1680, 0}, {2560, 1440}}</string>
+		<string>{{-1920, -30}, {1920, 1080}}</string>
 		<key>topLeft</key>
-		<string>{2887, 902}</string>
+		<string>{-1252, 771}</string>
 	</dict>
 	<key>NoSyncInstallationId</key>
 	<string>39DC3A56-1DC2-4D91-B841-959DC5A59C99</string>
 	<key>NoSyncLastTipTime</key>
 	<real>596727969.27798998</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>62</integer>
+	<integer>67</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -7447,15 +7456,8 @@
 			</dict>
 		</array>
 	</dict>
-	<key>NoSyncSearchHistory</key>
-	<array>
-		<string>sonar.branch</string>
-		<string>auto</string>
-	</array>
-	<key>NoSyncSearchHistory2</key>
-	<array>
-		<string>FROM openjdk:8-jdk-alpine VOLUME /tmp ARG JAR_FILE COPY ${JAR_FILE} app.jar ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]</string>
-	</array>
+	<key>NoSyncSaveDocumentAsPathSet_saveDocumentAs:</key>
+	<true/>
 	<key>NoSyncTipOfTheDayEligibilityBeganTime</key>
 	<real>586362749.75606596</real>
 	<key>NoSyncTipsToNotShow</key>
@@ -7596,7 +7598,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-02-14T12:11:43Z</date>
+	<date>2020-04-27T11:31:45Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>
@@ -7626,7 +7628,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.7</string>
+	<string>3.3.9</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>

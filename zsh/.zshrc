@@ -80,6 +80,7 @@ zplug 'romkatv/powerlevel10k', use:powerlevel10k.zsh-theme
 # Fuzzy search engine
 zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:"fzf", frozen:1
 zplug "junegunn/fzf", use:"shell/key-bindings.zsh"
+zplug 'Aloxaf/fzf-tab'
 # ... to ../.. extention
 zplug 'knu/zsh-manydots-magic', use:manydots-magic, defer:3
 zplug 'seebi/dircolors-solarized', ignore:"*", as:plugin
