@@ -382,18 +382,28 @@
     local conflicted='%1F' # red foreground
 
     local res
+
+    # custom git shortening
     local where  # branch or tag
     if [[ -n $VCS_STATUS_LOCAL_BRANCH ]]; then
-      res+="${clean}${POWERLEVEL9K_VCS_BRANCH_ICON}"
-      where=${(V)VCS_STATUS_LOCAL_BRANCH}
+        res+="${clean}${(g::)POWERLEVEL9K_VCS_BRANCH_ICON}"
+        setopt extended_glob
+        local -a match mbegin mend
+        if [[ $VCS_STATUS_LOCAL_BRANCH == (#b)([^/]##)/([A-Z]##-[0-9]##)-(?*) ]]; then
+            local folder=$match[1]
+            local ticket=$match[2]
+            local branch=$match[3]
+            where=$folder[1]/$ticket-$branch
+        else
+            where=$VCS_STATUS_LOCAL_BRANCH
+        fi
+        where=${(V)where}
     elif [[ -n $VCS_STATUS_TAG ]]; then
-      res+="${meta}#"
-      where=${(V)VCS_STATUS_TAG}
+        res+="${meta}#"
+        where=${(V)VCS_STATUS_TAG}
     fi
 
-    # If local branch name or tag is at most 32 characters long, show it in full.
-    # Otherwise show the first 12 … the last 12.
-    (( $#where > 32 )) && where[13,-13]="…"
+    (( $#where > 32 )) && where[26,-1]="…"
     res+="${clean}${where//\%/%%}"  # escape %
 
     # Display the current Git commit if there is no branch or tag.
