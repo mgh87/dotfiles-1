@@ -140,12 +140,11 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'arcticicestudio/nord-vim'
+Plug 'vim-airline/vim-airline'
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dhruvasagar/vim-zoom'
-Plug 'edkolev/tmuxline.vim'
 Plug 'godlygeek/tabular'
-Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'lervag/vimtex'
@@ -194,22 +193,22 @@ inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
 let g:vimtex_view_method = 'skim'
 
-" -- Tmuxline ----------------------------------------------------------------
-
-let g:tmuxline_theme = 'lightline'
-" We use :TmuxlineSnapshot to generate .tmux/tmuxline-(light|dark).conf.
-" Thereafter, we need to do a bit of patching to improve the integration of
-" tmxu-mem-cpu-load. (https://github.com/edkolev/tmuxline.vim/issues/78)
-let g:tmuxline_preset = {
-  \'a'       : '#S',
-  \'x'       : ' %Y-%m-%d  %H:%M',
-  \'y'       : '#(tmux-mem-cpu-load -q -g 5 -m 2 -i 2)',
-  \'z'       : ' #h',
-  \'win'     : ['#I', '#W'],
-  \'cwin'    : ['#I', '#W'],
-  \'options' : {'status-justify' : 'left'}}
-
-" -- Tmux Navigator ----------------------------------------------------------
+"" -- Tmuxline ----------------------------------------------------------------
+"
+"let g:tmuxline_theme = 'lightline'
+"" We use :TmuxlineSnapshot to generate .tmux/tmuxline-(light|dark).conf.
+"" Thereafter, we need to do a bit of patching to improve the integration of
+"" tmxu-mem-cpu-load. (https://github.com/edkolev/tmuxline.vim/issues/78)
+"let g:tmuxline_preset = {
+"  \'a'       : '#S',
+"  \'x'       : ' %Y-%m-%d  %H:%M',
+"  \'y'       : '#(tmux-mem-cpu-load -q -g 5 -m 2 -i 2)',
+"  \'z'       : ' #h',
+"  \'win'     : ['#I', '#W'],
+"  \'cwin'    : ['#I', '#W'],
+"  \'options' : {'status-justify' : 'left'}}
+"
+"" -- Tmux Navigator ----------------------------------------------------------
 
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
@@ -341,4 +340,3 @@ augroup filetype_gpg
   autocmd BufWritePost,FileWritePost  *.gpg u
 augroup END
 
-" vim: set fenc=utf-8 sw=2 sts=2 foldmethod=marker :
