@@ -139,6 +139,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'arcticicestudio/nord-vim'
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dhruvasagar/vim-zoom'
@@ -169,6 +170,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'jalvesaq/Nvim-R'
 call plug#end()
+
+
+colorscheme nord
 
 " -- fzf ---------------------------------------------------------------------
 
