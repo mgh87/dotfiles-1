@@ -47,3 +47,7 @@
 	path = ~/.gitconfig.work
 [init]
 	templatedir = ~/.git-templates
+[core]
+	pager = less -S
+[pull]
+	ff = only

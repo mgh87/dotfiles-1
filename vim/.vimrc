@@ -170,6 +170,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'jalvesaq/Nvim-R'
 call plug#end()
 
+" let g:nord_comment_brightness = 10
+let g:nord_cursor_line_number_background = 1
 
 colorscheme nord
 

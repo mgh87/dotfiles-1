@@ -16,7 +16,11 @@ zle -N self-insert url-quote-magic
 
 # Set keybindings to emacs idependent of editor
 # TODO check if vi is selected and only rebind then
+# TODO backspace is not working in vi mode, really annoying (insert only)
 bindkey -e
+# Vi keybindings
+# `bindkey "^?" backward-delete-char`
+
 
 # =============================================================================
 #                                   Plugins
