@@ -60,7 +60,6 @@ if [[ -d "${ZPLUG_HOME}" ]]; then
 fi
 
 zplug 'plugins/colored-man-pages', from:oh-my-zsh
-zplug 'plugins/completion', from:oh-my-zsh
 zplug 'plugins/extract', from:oh-my-zsh
 zplug 'plugins/fancy-ctrl-z', from:oh-my-zsh
 zplug 'plugins/git', from:oh-my-zsh, if:'which git'
@@ -101,7 +100,6 @@ zplug 'lib/directories', from:oh-my-zsh
 
 # removes annoying auto completion dots. credit hschne.at
 COMPLETION_WAITING_DOTS=false
-zplug 'lib/completion', from:oh-my-zsh
 zplug 'gradle/gradle-completion'
 
 # Emoji-CLI
