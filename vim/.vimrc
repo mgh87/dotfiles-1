@@ -147,7 +147,6 @@ Plug 'dhruvasagar/vim-zoom'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
-Plug 'lervag/vimtex'
 Plug 'mephux/bro.vim'
 Plug 'mhinz/vim-signify'
 Plug 'rhysd/vim-clang-format'
@@ -191,9 +190,6 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 " Advanced customization using autoload functions.
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
-" -- vimtex ------------------------------------------------------------------
-
-let g:vimtex_view_method = 'skim'
 
 "" -- Tmuxline ----------------------------------------------------------------
 "
@@ -243,10 +239,6 @@ map <Leader>vn :VimuxRunCommand("ninja")<CR>
 map <Leader>v<Space> :call VimuxZoomInspectRunner()<CR>
 
 " -- vim-dispatch ------------------------------------------------------------
-
-" Build via make.
-nmap <Leader>b :Make<CR>
-nmap <Leader>B :Make!<CR>
 
 " -- Nvim-R ------------------------------------------------------------------
 
