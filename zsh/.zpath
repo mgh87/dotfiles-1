@@ -62,15 +62,6 @@ if [[ -d ~/.gem && -d ~/.gem/ruby ]]; then
 fi
 
 
-if [[ -d ~/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/timetrap-1.15.2/completions/zsh ]]; then
-  fpath=(
-      ~/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/timetrap-1.15.2/completions/zsh
-      $fpath
-        )
-else
-    echo >&2 "Timetrap autocompletion not found"
-fi
-
 # Removes non-existent directories from an array.
 clean-path () {
   local element
