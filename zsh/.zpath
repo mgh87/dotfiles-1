@@ -49,6 +49,9 @@ case $OSTYPE in
     ;;
 esac
 
+# Added for rust
+fpath+=~/.zfunc
+
 # Source local paths.
 if [[ -f ~/.zpath.local ]]; then
   source ~/.zpath.local
