@@ -1,6 +1,5 @@
 [alias]
     cdiff = diff --cached
-    st = status --short
     merge-branch = merge --log --no-commit --no-ff
     fix-submodules = submodule update --recursive --init
     recursive = "!sh -c 'for i in . `git submodule foreach -q --recursive pwd`; do cd $i && git $@; done' -"
