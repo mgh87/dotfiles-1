@@ -218,18 +218,12 @@ export KEYID=5686D0EBC96E9B54CC5F3367B198DAAB514B53CF
 # Aliases
 source $HOME/.aliases
 
-if [[ -d /usr/local/Caskroom/google-cloud-sdk ]]; then
-  source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-  source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-fi
-
-
 # =============================================================================
 #                                   Startup
 # =============================================================================
 
 # Load nodenv autocompletion
-eval "$(nodenv init -)"
+# eval "$(nodenv init -)"
 
 # Source local customizations.
 if [[ -f ~/.zshrc.local ]]; then
@@ -244,3 +238,5 @@ if [ -f '/home/mgh/google-cloud-sdk/path.zsh.inc' ]; then . '/home/mgh/google-cl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/mgh/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/mgh/google-cloud-sdk/completion.zsh.inc'; fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
