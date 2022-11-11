@@ -2,4 +2,3 @@
 # http://www.zsh.org/mla/users/2015/msg00725.html for details.
 setopt global_rcs
 
-export PATH="$HOME/.cargo/bin:$PATH"

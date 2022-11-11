@@ -234,9 +234,11 @@ fi
   [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/mgh/google-cloud-sdk/path.zsh.inc' ]; then . '/home/mgh/google-cloud-sdk/path.zsh.inc'; fi
 
-# The next line enables shell command completion for gcloud.
+if [ -f '/opt/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/opt/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/home/mgh/google-cloud-sdk/path.zsh.inc' ]; then . '/home/mgh/google-cloud-sdk/path.zsh.inc'; fi
 if [ -f '/home/mgh/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/mgh/google-cloud-sdk/completion.zsh.inc'; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

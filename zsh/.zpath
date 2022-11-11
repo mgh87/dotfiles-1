@@ -72,6 +72,13 @@ if [[ -d ~/.gem && -d ~/.gem/ruby ]]; then
   foreach dir (~/.gem/ruby/*) { [[ -d $dir/bin ]] && path=( $dir/bin $path ) }
 fi
 
+if [[ -d /mnt/c ]]; then
+    path=(/mnt/c/Windows/System32 $path)
+fi
+
+if [[ -d $HOME/.cargo/bin ]]; then
+    path=($HOME/.cargo/bin $path)
+fi
 
 # Removes non-existent directories from an array.
 clean-path () {
