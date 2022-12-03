@@ -231,14 +231,14 @@ if [[ -f ~/.zshrc.local ]]; then
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # The next line updates PATH for the Google Cloud SDK.
 
 if [ -f '/opt/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/google-cloud-sdk/path.zsh.inc'; fi
 if [ -f '/opt/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/google-cloud-sdk/completion.zsh.inc'; fi
-if [ -f '/home/mgh/google-cloud-sdk/path.zsh.inc' ]; then . '/home/mgh/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f '/home/mgh/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/mgh/google-cloud-sdk/completion.zsh.inc'; fi
+[[ ! -f ~/google-cloud-sdk/path.zsh.inc ]] || source ~/google-cloud-sdk/path.zsh.inc
+[[ ! -f ~/google-cloud-sdk/completion.zsh.inc ]] || source ~/google-cloud-sdk/completion.zsh.inc
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ ! -f ~/.fzf.zsh ]] || source ~/.fzf.zsh
 

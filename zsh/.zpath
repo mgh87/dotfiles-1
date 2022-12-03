@@ -72,12 +72,20 @@ if [[ -d ~/.gem && -d ~/.gem/ruby ]]; then
   foreach dir (~/.gem/ruby/*) { [[ -d $dir/bin ]] && path=( $dir/bin $path ) }
 fi
 
-if [[ -d /mnt/c ]]; then
+if [[ -d /mnt/c/Windows/System32 ]]; then
     path=(/mnt/c/Windows/System32 $path)
+fi
+
+if [[ -d /mnt/c/Users/martin/AppData/Local/Programs/Microsoft\ VS\ Code/bin/ ]]; then
+    path=(/mnt/c/Users/martin/AppData/Local/Programs/Microsoft\ VS\ Code/bin/ $path)
 fi
 
 if [[ -d $HOME/.cargo/bin ]]; then
     path=($HOME/.cargo/bin $path)
+fi
+
+if [[ -d $HOME/go/bin ]]; then
+    path=($HOME/go/bin $path)
 fi
 
 # Removes non-existent directories from an array.
