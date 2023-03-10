@@ -84,7 +84,7 @@ zplug 'romkatv/powerlevel10k', use:powerlevel10k.zsh-theme
 zplug "junegunn/fzf", use:"shell/key-bindings.zsh"
 zplug 'Aloxaf/fzf-tab'
 # ... to ../.. extention
-zplug 'knu/zsh-manydots-magic', use:manydots-magic, defer:3
+#zplug 'knu/zsh-manydots-magic', use:manydots-magic, defer:3
 zplug 'seebi/dircolors-solarized', ignore:"*", as:plugin
 # backwards-jump by name 
 zplug 'Tarrasch/zsh-bd'

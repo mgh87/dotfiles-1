@@ -3,4 +3,5 @@
 	name = Martin Huter
 	email = martin.huter@viesure.io
 	signingkey = 5686D0EBC96E9B54CC5F3367B198DAAB514B53CF
-
+[url "git@gitlab.viesure.io:"]
+        insteadOf = https://gitlab.viesure.io/
