@@ -25,38 +25,6 @@ manpath=(
   /usr/man
 )
 
-
-# OS-specific paths.
-case $OSTYPE in
-  darwin*)
-    # MacTeX binaries.
-    [[ -d /usr/texbin ]] && path=( $path /usr/texbin )
-    [[ -d /Library/TeX/texbin ]] && path=( $path /Library/Tex/texbin )
-    # Apple's X11 binaries.
-    [[ -d /usr/X11R6/bin ]] && path=( $path /usr/X11R6/bin )
-    # Default MacPorts installations.
-    if [[ -d /opt/local ]]; then
-      path=( /opt/local/bin /opt/local/sbin $path )
-      manpath=( /opt/local/share/man $manpath )
-    fi
-    if [[ -d /Users/$USER/Library/Android/sdk ]]; then
-      export ANDROID_HOME=/Users/$USER/Library/Android/sdk
-      path=($ANDROID_HOME/emulator $ANDROID_HOME/platform-tools $ANDROID_HOME/tools PATH=$ANDROID_HOME/tools/bin $path)
-    fi
-    # Common Homebrew paths
-    if [[ -d /usr/local/opt/ruby/bin ]]; then
-      path=(/usr/local/opt/ruby/bin $path)
-    fi
-    if [[ -d /usr/local/opt/avr-gcc@8/bin ]]; then
-      path=(/usr/local/opt/avr-gcc@8/bin $path)
-    fi
-    if [[ -d /usr/local/Caskroom/google-cloud-sdk ]]; then
-      source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-      source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-    fi
-    ;;
-esac
-
 # Added for rust
 fpath+=~/.zfunc
 
@@ -86,6 +54,11 @@ fi
 
 if [[ -d $HOME/go/bin ]]; then
     path=($HOME/go/bin $path)
+fi
+
+if [[ -d /opt/google-cloud-cli ]]; then
+    source /opt/google-cloud-cli/completion.zsh.inc
+    source /opt/google-cloud-cli/path.zsh.inc
 fi
 
 # Removes non-existent directories from an array.
