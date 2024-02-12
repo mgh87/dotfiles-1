@@ -232,3 +232,6 @@ eval "$(jenv init -)"
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+
+# To customize prompt, run `p10k configure` or edit ~/dotfiles-1/zsh/.p10k.zsh.
+[[ ! -f ~/dotfiles-1/zsh/.p10k.zsh ]] || source ~/dotfiles-1/zsh/.p10k.zsh
