@@ -28,6 +28,8 @@ manpath=(
 # Added for rust
 fpath+=~/.zfunc
 
+fpath+=~/.zplug/repos/zsh-users/zsh-completions/src/
+
 # Source local paths.
 if [[ -f ~/.zpath.local ]]; then
   source ~/.zpath.local
@@ -56,9 +58,12 @@ if [[ -d $HOME/go/bin ]]; then
     path=($HOME/go/bin $path)
 fi
 
-if [[ -d /opt/google-cloud-cli ]]; then
-    source /opt/google-cloud-cli/completion.zsh.inc
-    source /opt/google-cloud-cli/path.zsh.inc
+if [[ -d $HOME/google-cloud-sdk ]]; then
+    path=($HOME/google-cloud-sdk/bin $path)
+fi
+
+if [[ -d $HOME/.jenv/bin ]]; then
+    path=($HOME/.jenv/bin $PATH)
 fi
 
 # Removes non-existent directories from an array.

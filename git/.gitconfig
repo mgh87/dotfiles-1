@@ -46,3 +46,5 @@
 	pager = less -S
 [pull]
 	ff = only
+[http]
+	cookiefile = /home/mgh/.gitcookies

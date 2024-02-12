@@ -84,7 +84,7 @@ zplug 'romkatv/powerlevel10k', use:powerlevel10k.zsh-theme
 zplug "junegunn/fzf", use:"shell/key-bindings.zsh"
 zplug 'Aloxaf/fzf-tab'
 # ... to ../.. extention
-#zplug 'knu/zsh-manydots-magic', use:manydots-magic, defer:3
+#zplug 'knu/zsh-manydots-magic', use:manydots-magic, defer:2
 zplug 'seebi/dircolors-solarized', ignore:"*", as:plugin
 # backwards-jump by name 
 zplug 'Tarrasch/zsh-bd'
@@ -198,17 +198,7 @@ update() {
       kill -0 "$$" || exit
     done 2>/dev/null &
   fi
-  # System
-  sudo softwareupdate -i -a
-  # Homebrew
-  brew upgrade
-  brew cleanup
-  # npm
-  npm install npm -g
-  npm update -g
-  # Shell plugin management
   zplug update
-  .tmux/plugins/tpm/bin/update_plugins all
   vim +PlugUpgrade +PlugUpdate +PlugCLean! +qa
 }
 
@@ -235,3 +225,10 @@ fi
 
 [[ ! -f ~/.fzf.zsh ]] || source ~/.fzf.zsh
 
+[[ ! -d $HOME/google-cloud-sdk ]] || source ~/google-cloud-sdk/completion.zsh.inc && source ~/google-cloud-sdk/path.zsh.inc
+
+eval "$(jenv init -)"
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
