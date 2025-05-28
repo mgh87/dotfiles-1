@@ -40,91 +40,68 @@ ZSH_HIGHLIGHT_STYLES[command]='fg=green,bold'
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=green,bold'
 ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=green,bold'
 
-if [[ ! -d "${ZPLUG_HOME}" ]]; then
-  if [[ ! -d ~/.zplug ]]; then
-    git clone https://github.com/zplug/zplug ~/.zplug
-    # If we can't get zplug, it'll be a very sobering shell experience. To at
-    # least complete the sourcing of this file, we'll define an always-false
-    # returning zplug function.
-    if [[ $? != 0 ]]; then
-      function zplug() {
-        return 1
-      }
-    fi
-  fi
-  export ZPLUG_HOME=~/.zplug
-fi
-if [[ -d "${ZPLUG_HOME}" ]]; then
-  source "${ZPLUG_HOME}/init.zsh"
+# Install Zi if it's not installed
+if [[ ! -d "${ZDOTDIR:-$HOME}/.zi" ]]; then
+  mkdir -p "${ZDOTDIR:-$HOME}/.zi"
+  git clone https://github.com/z-shell/zi "${ZDOTDIR:-$HOME}/.zi/bin"
 fi
 
-zplug 'plugins/colored-man-pages', from:oh-my-zsh
-zplug 'plugins/extract', from:oh-my-zsh
-zplug 'plugins/fancy-ctrl-z', from:oh-my-zsh
-zplug 'plugins/git', from:oh-my-zsh, if:'which git'
-zplug 'plugins/tmux', from:oh-my-zsh, if:'which tmux'
-zplug 'plugins/mvn', from:oh-my-zsh
-zplug 'plugins/gradle', from:oh-my-zsh
-zplug 'plugins/jenv', from:oh-my-zsh
-zplug 'plugins/aws', from:oh-my-zsh
-zplug 'plugins/rbenv', from:oh-my-zsh
-zplug 'plugins/kubectl', from:oh-my-zsh
-# new ls
-zplug 'supercrabtree/k'
+source "${ZDOTDIR:-$HOME}/.zi/bin/zi.zsh"
 
-# docker
-zplug 'plugins/docker', from:oh-my-zsh
-zplug 'plugins/docker-compose', from:oh-my-zsh
-zplug 'plugins/docker-machine', from:oh-my-zsh
+# OH-MY-ZSH Plugins
+zi light-mode for \
+  OMZ::plugins/colored-man-pages \
+  OMZ::plugins/extract \
+  OMZ::plugins/fancy-ctrl-z \
+  OMZ::plugins/git \
+  OMZ::plugins/tmux \
+  OMZ::plugins/mvn \
+  OMZ::plugins/gradle \
+  OMZ::plugins/jenv \
+  OMZ::plugins/aws \
+  OMZ::plugins/rbenv \
+  OMZ::plugins/kubectl \
 
-# theme
-zplug 'romkatv/powerlevel10k', use:powerlevel10k.zsh-theme
+# External plugins and tools
+zi light supercrabtree/k
 
-# Fuzzy search engine
-zplug "junegunn/fzf", use:"shell/key-bindings.zsh"
-zplug 'Aloxaf/fzf-tab'
-# ... to ../.. extention
-#zplug 'knu/zsh-manydots-magic', use:manydots-magic, defer:2
-zplug 'seebi/dircolors-solarized', ignore:"*", as:plugin
-# backwards-jump by name 
-zplug 'Tarrasch/zsh-bd'
-zplug 'zsh-users/zsh-autosuggestions'
-zplug 'zsh-users/zsh-completions', defer:2
-zplug 'zsh-users/zsh-history-substring-search'
-zplug 'zsh-users/zsh-syntax-highlighting', defer:2
-zplug "lukechilds/zsh-better-npm-completion", defer:2
+zi light romkatv/powerlevel10k
 
-# loading parts of lib from oh-my-zsh i want
-zplug 'lib/directories', from:oh-my-zsh
+# FZF with custom install hook
+zi for \
+  atclone'./install --bin' \
+  atpull'%atclone' \
+  pick'shell/key-bindings.zsh' \
+  junegunn/fzf
 
-# removes annoying auto completion dots. credit hschne.at
+zi light Aloxaf/fzf-tab
+
+# dircolors-solarized - pick nothing (only sets color schemes)
+zi for \
+  pick'' \
+  seebi/dircolors-solarized
+
+zi light Tarrasch/zsh-bd
+zi light zsh-users/zsh-autosuggestions
+zi wait lucid for zsh-users/zsh-completions
+zi wait lucid for zsh-users/zsh-syntax-highlighting
+zi light zsh-users/zsh-history-substring-search
+zi wait lucid for lukechilds/zsh-better-npm-completion
+zi light gradle/gradle-completion
+
+zi light MichaelAquilina/zsh-you-should-use
+zi light mgh87/zsh-mgh-plugins
+
+# Optional: emoji tools (commented out since you had them commented)
+# zi light b4b4r07/emoji-cli \
+#   atload"zi light stedolan/jq"
+# zi from"gh-r" as"command" mv"jq" pick"jq" light stedolan/jq
+# zi as"command" pick"emojify" light mrowa44/emojify
+
+# Disable annoying dots in completion
 COMPLETION_WAITING_DOTS=false
-zplug 'gradle/gradle-completion'
 
-# Emoji-CLI
-#
-# Emojis for the command line. Yes, this is absolutely needed.
-# requires brew install emojify on mac
-#
-# Website: https://github.com/b4b4r07/emoji-cli
-# TODO get it running properly
-# zplug "b4b4r07/emoji-cli", on:"stedolan/jq", defer:2
-# zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
 
-# Emojis for the command line, also super important.
-##zplug "mrowa44/emojify", as:command, use:emojify
-
-## suggestiom by hans
-zplug "MichaelAquilina/zsh-you-should-use"
-
-## my plugin!
-zplug "mgh87/zsh-mgh-plugins"
-
-if ! zplug check; then
-  zplug install
-fi
-
-zplug load
 
 # Our custom version of oh-my-zsh's globalias plugin. Unlike the OMZ version,
 # we do not use the `expand-word' widget and only expand a few whitelisted
@@ -148,11 +125,6 @@ globalias() {
   fi
   zle self-insert
 }
-#zle -N globalias
-#bindkey -M emacs ' ' globalias
-#bindkey -M viins ' ' globalias
-#bindkey -M isearch ' ' magic-space # normal space during searches
-
 
 # =============================================================================
 #                                   Options
@@ -198,7 +170,6 @@ update() {
       kill -0 "$$" || exit
     done 2>/dev/null &
   fi
-  zplug update
   vim +PlugUpgrade +PlugUpdate +PlugCLean! +qa
 }
 

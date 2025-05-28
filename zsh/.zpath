@@ -28,7 +28,6 @@ manpath=(
 # Added for rust
 fpath+=~/.zfunc
 
-fpath+=~/.zplug/repos/zsh-users/zsh-completions/src/
 
 # Source local paths.
 if [[ -f ~/.zpath.local ]]; then
