@@ -17,14 +17,15 @@ bindkey -v
 # Enable delete with backspace
 `bindkey "^?" backward-delete-char`
 
-colon-runner() {
-  zle -I
-  vared -p "command: " -c cmd
-  zle reset-prompt
-  eval "$cmd"
-}
-zle -N colon-runner
-bindkey -M vicmd ':' colon-runner
+# TODO get colon workin in vim
+#colon-runner() {
+#  zle -I
+#  vared -p "command: " -c cmd
+#  zle reset-prompt
+#  eval "$cmd"
+#}
+#zle -N colon-runner
+#bindkey -M vicmd ':' colon-runner
 
 # =============================================================================
 #                                   Plugins
