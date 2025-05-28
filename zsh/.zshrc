@@ -13,13 +13,18 @@ fi
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 
-# Set keybindings to emacs idependent of editor
-# TODO check if vi is selected and only rebind then
-# TODO backspace is not working in vi mode, really annoying (insert only)
-bindkey -e
-# Vi keybindings
-# `bindkey "^?" backward-delete-char`
+bindkey -v
+# Enable delete with backspace
+`bindkey "^?" backward-delete-char`
 
+colon-runner() {
+  zle -I
+  vared -p "command: " -c cmd
+  zle reset-prompt
+  eval "$cmd"
+}
+zle -N colon-runner
+bindkey -M vicmd ':' colon-runner
 
 # =============================================================================
 #                                   Plugins
@@ -28,17 +33,17 @@ bindkey -e
 HYPHEN_INSENSITIVE="true"
 # /!\ do not use with zsh-autosuggestions
 
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[cursor]='bold'
+#ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+#typeset -A ZSH_HIGHLIGHT_STYLES
+#ZSH_HIGHLIGHT_STYLES[cursor]='bold'
 
-ZSH_HIGHLIGHT_STYLES[alias]='fg=green,bold'
-ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green,bold'
-ZSH_HIGHLIGHT_STYLES[builtin]='fg=green,bold'
-ZSH_HIGHLIGHT_STYLES[function]='fg=green,bold'
-ZSH_HIGHLIGHT_STYLES[command]='fg=green,bold'
-ZSH_HIGHLIGHT_STYLES[precommand]='fg=green,bold'
-ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=green,bold'
+#ZSH_HIGHLIGHT_STYLES[alias]='fg=green,bold'
+#ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green,bold'
+#ZSH_HIGHLIGHT_STYLES[builtin]='fg=green,bold'
+#ZSH_HIGHLIGHT_STYLES[function]='fg=green,bold'
+#ZSH_HIGHLIGHT_STYLES[command]='fg=green,bold'
+#ZSH_HIGHLIGHT_STYLES[precommand]='fg=green,bold'
+#ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=green,bold'
 
 # Install Zi if it's not installed
 if [[ ! -d "${ZDOTDIR:-$HOME}/.zi" ]]; then
@@ -47,6 +52,11 @@ if [[ ! -d "${ZDOTDIR:-$HOME}/.zi" ]]; then
 fi
 
 source "${ZDOTDIR:-$HOME}/.zi/bin/zi.zsh"
+
+#OH-MY-ZSH libs
+zi ice pick"lib/git.zsh"
+zi light ohmyzsh/ohmyzsh
+
 
 # OH-MY-ZSH Plugins
 zi light-mode for \
@@ -60,7 +70,7 @@ zi light-mode for \
   OMZ::plugins/jenv \
   OMZ::plugins/aws \
   OMZ::plugins/rbenv \
-  OMZ::plugins/kubectl \
+  OMZ::plugins/kubectl
 
 # External plugins and tools
 zi light supercrabtree/k
