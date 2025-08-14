@@ -55,8 +55,8 @@ fi
 source "${ZDOTDIR:-$HOME}/.zi/bin/zi.zsh"
 
 #OH-MY-ZSH libs
-zi ice pick"lib/git.zsh"
-zi light ohmyzsh/ohmyzsh
+zi snippet "OMZL::git.zsh"
+zi snippet "OMZL::directories.zsh"
 
 
 # OH-MY-ZSH Plugins
