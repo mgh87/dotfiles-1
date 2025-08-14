@@ -48,3 +48,6 @@
 	ff = only
 [http]
 	cookiefile = /home/mgh/.gitcookies
+
+[includeIf "gitdir:~/ws/twinformatics/"]
+    path = ~/.gitconfig-twinformatics
