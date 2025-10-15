@@ -1,4 +1,5 @@
-alias vi=vim
+alias vi=nvim
+alias vim=nvim
 alias ll="ls -slap"
 alias na=nice-alias
 #alias docker-aws-login="$(aws ecr get-login --no-include-email --region eu-central-1)"
