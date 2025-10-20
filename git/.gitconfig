@@ -1,10 +1,4 @@
 [alias]
-    cdiff = diff --cached
-    merge-branch = merge --log --no-commit --no-ff
-    fix-submodules = submodule update --recursive --init
-    recursive = "!sh -c 'for i in . `git submodule foreach -q --recursive pwd`; do cd $i && git $@; done' -"
-    recursive-sh = "!sh -c 'for i in . `git submodule foreach -q --recursive pwd`; do cd $i && $@; done' -"
-    pt = !git tag -l | xargs git tag -d && git fetch -t
 
 [branch]
     sort = -committerdate
