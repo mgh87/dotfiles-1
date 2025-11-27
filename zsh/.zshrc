@@ -187,6 +187,10 @@ update() {
 # GPG key id
 export KEYID=5686D0EBC96E9B54CC5F3367B198DAAB514B53CF
 
+# Color manpages
+export MANROFFOPT='-P -c'
+export MANPAGER='less --use-color -Dd+r -Du+b'
+
 # Aliases
 source $HOME/.aliases
 
