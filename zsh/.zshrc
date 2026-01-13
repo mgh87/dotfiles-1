@@ -211,13 +211,27 @@ fi
 
 [[ ! -f ~/.fzf.zsh ]] || source ~/.fzf.zsh
 
-[[ ! -d $HOME/google-cloud-sdk ]] || source ~/google-cloud-sdk/completion.zsh.inc && source ~/google-cloud-sdk/path.zsh.inc
+# dynamically find gcloud sdk root
+if (( $+commands[gcloud] )); then
+    # 1. Find the real path to the binary (resolves symlinks with :A)
+    local _gcloud_path="${commands[gcloud]:A}"
+    
+    # 2. Go up two levels: .../sdk/bin/gcloud -> .../sdk
+    local _sdk_root="${_gcloud_path:h:h}"
+
+    # 3. Source the files if they exist
+    [[ -f "$_sdk_root/path.zsh.inc" ]]       && source "$_sdk_root/path.zsh.inc"
+    [[ -f "$_sdk_root/completion.zsh.inc" ]] && source "$_sdk_root/completion.zsh.inc"
+    
+    # Cleanup variables to keep environment clean
+    unset _gcloud_path _sdk_root
+fi
 
 eval "$(jenv init -)"
 
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)
 
 # To customize prompt, run `p10k configure` or edit ~/dotfiles-1/zsh/.p10k.zsh.
 [[ ! -f ~/dotfiles-1/zsh/.p10k.zsh ]] || source ~/dotfiles-1/zsh/.p10k.zsh
