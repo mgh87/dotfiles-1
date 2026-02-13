@@ -229,6 +229,8 @@ fi
 
 eval "$(jenv init -)"
 
+# Allow site packages in gcloud from python
+export CLOUDSDK_PYTHON_SITEPACKAGES=1
 
 # Load Angular CLI autocompletion.
 # source <(ng completion script)

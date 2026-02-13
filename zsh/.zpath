@@ -62,7 +62,11 @@ if [[ -d $HOME/google-cloud-sdk ]]; then
 fi
 
 if [[ -d $HOME/.jenv/bin ]]; then
-    path=($HOME/.jenv/bin $PATH)
+    path=($HOME/.jenv/bin $path)
+fi
+
+if [[ -d $HOME/.local/share/omarchy/bin ]]; then
+    path=($HOME/.local/share/omarchy/bin $path)
 fi
 
 # Removes non-existent directories from an array.
